@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bositxonov Abdulaziz | Tarmoq administratori</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#ff6200',
+              yellow: '#fbbf24',
+              blue: '#2563eb'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Dark Mode foni */
+    body {
+      background-color: #08090d;
+      color: #e2e8f0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .bg-grid {
+      background-size: 32px 32px;
+      background-image: radial-gradient(rgba(255, 98, 0, 0.08) 1px, transparent 1px);
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 50% 20%, rgba(255, 98, 0, 0.14) 0%, rgba(37, 99, 235, 0.06) 40%, transparent 70%);
+    }
+
+    /* Light Mode foni */
+    body.light-theme {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    body.light-theme .bg-grid {
+      background-image: radial-gradient(rgba(255, 98, 0, 0.15) 1px, transparent 1px);
+    }
+    body.light-theme .hero-glow {
+      background: radial-gradient(circle at 50% 20%, rgba(255, 98, 0, 0.1) 0%, rgba(37, 99, 235, 0.05) 50%, transparent 75%);
+    }
+    body.light-theme .theme-nav {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-color: #e2e8f0;
+    }
+    body.light-theme .theme-card {
+      background-color: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+    body.light-theme .theme-input {
+      background-color: #f1f5f9 !important;
+      border-color: #cbd5e1 !important;
+      color: #0f172a !important;
+    }
+    body.light-theme .theme-text-heading {
+      color: #0f172a !important;
+    }
+    body.light-theme .theme-text-sub {
+      color: #475569 !important;
+    }
+    body.light-theme .theme-divide > * {
+      border-color: #f1f5f9 !important;
+    }
+
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s infinite;
+      color: #ff6200;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="bg-grid selection:bg-brand-orange selection:text-white relative overflow-x-hidden">
+
+  <!-- Canvas fon -->
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="relative z-10">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav class="theme-nav fixed top-0 left-0 right-0 z-40 bg-[#08090d]/85 backdrop-blur-md border-b border-[#1e2433]/60 transition-colors duration-300">
+      <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#asosiy" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg border border-brand-orange flex items-center justify-center text-brand-orange">
+            <i class="fa-solid fa-server text-sm"></i>
+          </div>
+          <span class="font-extrabold tracking-wider theme-text-heading text-white text-base">BOSITXONOV<span class="text-brand-orange">.DEV</span></span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium theme-text-sub text-slate-300">
+          <a href="#asosiy" class="hover:text-brand-orange transition-colors">Asosiy</a>
+          <a href="#haqimda" class="hover:text-brand-orange transition-colors">Men haqimda</a>
+          <a href="#talim" class="hover:text-brand-orange transition-colors">Ta'lim & Bilimlar</a>
+          <a href="#tarmoqlar" class="hover:text-brand-orange transition-colors">Tarmoqlar</a>
+          <a href="#boglanish" class="hover:text-brand-orange transition-colors">Bog'lanish</a>
+        </div>
+
+        <div class="w-10 h-10"></div>
+      </div>
+    </nav>
+
+    <!-- ================= 00. HERO SECTION ================= -->
+    <section id="asosiy" class="min-h-screen pt-32 pb-20 flex flex-col items-center justify-center text-center px-4 relative hero-glow">
+      
+      <div class="relative mb-6">
+        <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full p-[3px] bg-gradient-to-b from-brand-orange via-[#1e2433] to-brand-blue shadow-2xl shadow-brand-orange/20 relative mx-auto">
+          <div class="w-full h-full rounded-full overflow-hidden bg-[#08090d]">
+            <img 
+              src="./images/kerakli.jpg" 
+              alt="Bositxonov Abdulaziz" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <span class="absolute top-2 left-2 w-7 h-7 rounded-lg theme-card bg-[#08090d] border border-brand-orange/40 text-brand-orange text-xs flex items-center justify-center">
+            <i class="fa-solid fa-network-wired"></i>
+          </span>
+        </div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full theme-card bg-[#0f121a]/90 backdrop-blur-md border border-[#1e2433] text-xs theme-text-sub text-slate-300 mt-[-15px] relative z-10">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Talaba • Faol</span>
+        </div>
+      </div>
+
+      <div class="font-mono text-xs text-brand-orange tracking-widest uppercase mb-3">
+        &gt;_ SALOM, XUSH KELIBSIZ!
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold theme-text-heading text-white tracking-tight mb-3">
+        Bositxonov <span class="bg-gradient-to-r from-brand-orange to-brand-yellow bg-clip-text text-transparent">Abdulaziz</span>
+      </h1>
+
+      <div class="font-mono text-lg sm:text-2xl theme-text-sub text-slate-300 mb-6">
+        Kasbi: <span id="typewriter" class="text-brand-orange border-b-2 border-brand-orange pb-0.5 typing-cursor font-semibold"></span>
+      </div>
+
+      <p class="max-w-2xl theme-text-sub text-slate-400 text-sm sm:text-base leading-relaxed mb-8 px-4">
+        Assalomu alaykum! Men Abdulaziz, axborot texnologiyalari va raqamli xavfsizlik sohasida professional tajribaga ega mutaxassisman. Mening asosiy maqsadim — zamonaviy tarmoq tizimlarini loyihalash, yuqori darajadagi kiberxavfsizlikni ta'minlash hamda sun'iy intellekt imkoniyatlaridan unumli foydalangan holda kreativ kontentlar yaratishdir. Har bir loyihaga mukammallik va xavfsizlik prizmasidan yondashaman.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#haqimda" class="px-7 py-3 rounded-xl bg-brand-orange hover:bg-[#e05600] text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-brand-orange/30">
+          <i class="fa-solid fa-arrow-down"></i>
+          <span>Men haqimda</span>
+        </a>
+        <a href="#boglanish" class="px-7 py-3 rounded-xl theme-card bg-[#0f121a]/90 hover:opacity-90 border border-[#1e2433] theme-text-heading text-white font-semibold text-sm transition-all backdrop-blur-md">
+          Bog'lanish
+        </a>
+      </div>
+
+      <div class="mt-16 flex flex-col items-center gap-2 theme-text-sub text-slate-500 text-[11px] font-mono tracking-widest uppercase">
+        <span>PASTGA AYLANTIRING</span>
+        <div class="w-0.5 h-6 bg-brand-orange animate-bounce"></div>
+      </div>
+    </section>
+
+    <!-- ================= 01. MEN HAQIMDA ================= -->
+    <section id="haqimda" class="py-24 max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="font-mono text-xs text-brand-orange tracking-widest uppercase">01 . MEN HAQIMDA</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold theme-text-heading text-white mt-2">Men haqimda qisqacha ma'lumot</h2>
+        <div class="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-5 theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6 space-y-5">
+          <h3 class="text-lg font-bold theme-text-heading text-white flex items-center gap-2 border-l-4 border-brand-orange pl-3">
+            Shaxsiy ma'lumotlar
+          </h3>
+          
+          <div class="space-y-4 text-sm divide-y theme-divide divide-[#1e2433]/60">
+            <div class="flex items-center justify-between pt-3">
+              <span class="theme-text-sub text-slate-400 flex items-center gap-2.5"><i class="fa-regular fa-user text-brand-orange"></i> To'liq Ism-sharif</span>
+              <span class="font-semibold theme-text-heading text-white">Bositxonov Abdulaziz</span>
+            </div>
+            <div class="flex items-center justify-between pt-3">
+              <span class="theme-text-sub text-slate-400 flex items-center gap-2.5"><i class="fa-regular fa-calendar text-brand-orange"></i> Holati</span>
+              <span class="font-semibold theme-text-heading text-white">Talaba</span>
+            </div>
+            <div class="flex items-center justify-between pt-3">
+              <span class="theme-text-sub text-slate-400 flex items-center gap-2.5"><i class="fa-solid fa-location-dot text-brand-orange"></i> Mamlakat</span>
+              <span class="font-semibold theme-text-heading text-white">O'zbekiston</span>
+            </div>
+            <div class="flex items-center justify-between pt-3">
+              <span class="theme-text-sub text-slate-400 flex items-center gap-2.5"><i class="fa-solid fa-server text-brand-orange"></i> Sohasi</span>
+              <span class="font-semibold theme-text-heading text-white">Tarmoq & Server boshqaruvi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6">
+          <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6">
+            <h3 class="text-lg font-bold theme-text-heading text-white flex items-center gap-2 border-l-4 border-brand-orange pl-3 mb-4">
+              Tarjimai hol
+            </h3>
+            <p class="theme-text-sub text-slate-300 text-sm leading-relaxed">
+              Assalomu alaykum! Men Abdulaziz, axborot texnologiyalari va raqamli xavfsizlik sohasida professional tajribaga ega mutaxassisman. Mening asosiy maqsadim — zamonaviy tarmoq tizimlarini loyihalash, yuqori darajadagi kiberxavfsizlikni ta'minlash hamda sun'iy intellekt imkoniyatlaridan unumli foydalangan holda kreativ kontentlar yaratishdir. Har bir loyihaga mukammallik va xavfsizlik prizmasidan yondashaman.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            
+            <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-5 text-center flex flex-col items-center justify-center">
+              <div class="w-11 h-11 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mb-2.5">
+                <i class="fa-solid fa-briefcase text-lg"></i>
+              </div>
+              <div class="text-2xl font-extrabold theme-text-heading text-white">1<span class="text-brand-orange">+</span></div>
+              <p class="text-xs theme-text-sub text-slate-400 mt-1">Yillik Tajriba</p>
+            </div>
+
+            <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-5 text-center flex flex-col items-center justify-center">
+              <div class="w-11 h-11 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mb-2.5">
+                <i class="fa-regular fa-circle-check text-lg"></i>
+              </div>
+              <div class="text-2xl font-extrabold theme-text-heading text-white">16 <span class="text-brand-orange text-xl font-bold">ta</span></div>
+              <p class="text-xs theme-text-sub text-slate-400 mt-1">Bajarilgan Loyihalar</p>
+            </div>
+
+            <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-5 text-center flex flex-col items-center justify-center">
+              <div class="w-11 h-11 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mb-2.5">
+                <i class="fa-solid fa-ribbon text-lg"></i>
+              </div>
+              <div class="text-2xl font-extrabold theme-text-heading text-white">2 <span class="text-brand-orange text-xl font-bold">ta</span></div>
+              <p class="text-xs theme-text-sub text-slate-400 mt-1">Sertifikatlar</p>
+            </div>
+
+            <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-5 text-center flex flex-col items-center justify-center">
+              <div class="w-11 h-11 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mb-2.5">
+                <i class="fa-solid fa-user-group text-lg"></i>
+              </div>
+              <div class="text-2xl font-extrabold theme-text-heading text-white">500 <span class="text-brand-orange text-xl font-bold">ta</span></div>
+              <p class="text-xs theme-text-sub text-slate-400 mt-1">Obunachilar</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 02. TA'LIM VA BILIMLAR ================= -->
+    <section id="talim" class="py-24 max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="font-mono text-xs text-brand-orange tracking-widest uppercase">02 . TA'LIM VA BILIMLARIM</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold theme-text-heading text-white mt-2">O'quv yo'li va Professional ko'nikmalar</h2>
+        <div class="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <h3 class="text-lg font-bold text-brand-orange flex items-center gap-2">
+            <i class="fa-solid fa-graduation-cap"></i> Akademik Ma'lumot
+          </h3>
+
+          <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6 relative">
+            <span class="px-2.5 py-1 rounded bg-brand-orange/10 border border-brand-orange/30 text-brand-orange font-mono text-xs">Hozirda</span>
+            <h4 class="text-lg font-bold theme-text-heading text-white mt-3">Tarmoq Tizimlari va Axborot Xavfsizligi</h4>
+            <p class="text-xs theme-text-sub text-slate-400 mt-0.5">Oliy ta'lim muassasasi talabasi</p>
+            <p class="text-sm theme-text-sub text-slate-300 mt-3 leading-relaxed">
+              Korporativ tarmoqlarni loyihalash, serverlarni boshqarish, kiberxavfsizlik protokollari va tizimli ma'murlash bo'yicha amaliy ta'lim.
+            </p>
+          </div>
+
+          <h3 class="text-lg font-bold text-brand-orange flex items-center gap-2 pt-4">
+            <i class="fa-solid fa-certificate"></i> Asosiy yo'nalishlar
+          </h3>
+
+          <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6">
+            <span class="px-2.5 py-1 rounded bg-brand-orange/10 border border-brand-orange/30 text-brand-orange font-mono text-xs">Soha</span>
+            <h4 class="text-lg font-bold theme-text-heading text-white mt-3">Tarmoq Administratsiyasi & Monitoring</h4>
+            <p class="text-sm theme-text-sub text-slate-300 mt-2 leading-relaxed">
+              Lokal tarmoqlar (LAN/WAN), marshrutlash (routing/switching), firewall himoyasi hamda serverlar monitoringi.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 space-y-6">
+          <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6 space-y-4">
+            <h3 class="text-base font-bold text-brand-orange flex items-center gap-2">
+              <i class="fa-solid fa-server"></i> Tarmoq va Server Boshqaruvi
+            </h3>
+
+            <!-- 1. Cisco Networking (100%) -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span class="theme-text-heading text-white">Cisco Networking (Routing & Switching)</span>
+                <span class="text-brand-orange">100%</span>
+              </div>
+              <div class="w-full bg-slate-800/40 border border-slate-700/20 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-brand-orange to-brand-yellow h-full rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <!-- 2. Linux Server (100%) -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span class="theme-text-heading text-white">Linux Server (Ubuntu / Debian / RHEL)</span>
+                <span class="text-brand-orange">100%</span>
+              </div>
+              <div class="w-full bg-slate-800/40 border border-slate-700/20 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-brand-orange to-brand-yellow h-full rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <!-- 3. Windows Server (100%) -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span class="theme-text-heading text-white">Windows Server & Active Directory</span>
+                <span class="text-brand-orange">100%</span>
+              </div>
+              <div class="w-full bg-slate-800/40 border border-slate-700/20 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-brand-orange to-brand-yellow h-full rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <!-- 4. Kiberxavfsizlik (88%) -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span class="theme-text-heading text-white">Kiberxavfsizlik, Firewall & VPN Himoyasi</span>
+                <span class="text-brand-orange">88%</span>
+              </div>
+              <div class="w-full bg-slate-800/40 border border-slate-700/20 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-brand-orange to-brand-yellow h-full rounded-full" style="width: 88%"></div>
+              </div>
+            </div>
+
+            <!-- 5. Frontend & Skriptlash (85%) -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold mb-1">
+                <span class="theme-text-heading text-white">Frontend & Skriptlash (HTML, CSS, JS, Bash)</span>
+                <span class="text-brand-orange">85%</span>
+              </div>
+              <div class="w-full bg-slate-800/40 border border-slate-700/20 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-brand-orange to-brand-yellow h-full rounded-full" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 03. TARMOQLAR ================= -->
+    <section id="tarmoqlar" class="py-24 max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="font-mono text-xs text-brand-orange tracking-widest uppercase">03 . IJTIMOIY TARMOQLAR</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold theme-text-heading text-white mt-2">Mening Tarmoqdagi Sahifalarim</h2>
+        <p class="theme-text-sub text-slate-400 text-sm mt-2">Mening faoliyatimni kuzatib borish va aloqaga chiqish uchun sahifalarim.</p>
+        <div class="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6 flex flex-col justify-between hover:border-brand-orange transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl">
+                <i class="fa-brands fa-telegram"></i>
+              </div>
+              <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-800/40 theme-text-sub text-slate-400">Telegram</span>
+            </div>
+            <h3 class="text-lg font-bold theme-text-heading text-white">@bositxonov7</h3>
+            <p class="text-xs theme-text-sub text-slate-400 mt-1">Tezkor xabarlar va aloqa</p>
+          </div>
+          <a href="https://t.me/bositxonov7" target="_blank" class="mt-6 w-full py-2.5 rounded-xl bg-slate-800/40 hover:bg-brand-orange hover:text-white text-center text-xs font-semibold theme-text-heading text-slate-200 transition-all flex items-center justify-center gap-1.5">
+            <span>Bog'lanish</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+
+        <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6 flex flex-col justify-between hover:border-brand-orange transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-400/10 text-amber-400 flex items-center justify-center text-2xl">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-800/40 theme-text-sub text-slate-400">E-pochta</span>
+            </div>
+            <h3 class="text-lg font-bold theme-text-heading text-white break-all">bositxonov7@gmail.com</h3>
+            <p class="text-xs theme-text-sub text-slate-400 mt-1">Rasmiy yozishmalar uchun</p>
+          </div>
+          <a href="mailto:bositxonov7@gmail.com" class="mt-6 w-full py-2.5 rounded-xl bg-slate-800/40 hover:bg-brand-orange hover:text-white text-center text-xs font-semibold theme-text-heading text-slate-200 transition-all flex items-center justify-center gap-1.5">
+            <span>Xabar yozish</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+
+        <div class="theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6 flex flex-col justify-between hover:border-brand-orange transition-all sm:col-span-2 lg:col-span-1">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-800 text-white flex items-center justify-center text-2xl">
+                <i class="fa-brands fa-github"></i>
+              </div>
+              <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-800/40 theme-text-sub text-slate-400">GitHub</span>
+            </div>
+            <h3 class="text-lg font-bold theme-text-heading text-white">Bositxonov</h3>
+            <p class="text-xs theme-text-sub text-slate-400 mt-1">Skriptlar va loyihalar</p>
+          </div>
+          <a href="https://github.com" target="_blank" class="mt-6 w-full py-2.5 rounded-xl bg-slate-800/40 hover:bg-brand-orange hover:text-white text-center text-xs font-semibold theme-text-heading text-slate-200 transition-all flex items-center justify-center gap-1.5">
+            <span>Repozitoriylar</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 04. ALOQA O'RNATISH ================= -->
+    <section id="boglanish" class="py-24 max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="font-mono text-xs text-brand-orange tracking-widest uppercase">04 . MEN BILAN BOG'LANISH</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold theme-text-heading text-white mt-2">Aloqa o'rnatish</h2>
+        <div class="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <div class="lg:col-span-5 theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6 space-y-4">
+          <h3 class="text-lg font-bold theme-text-heading text-white flex items-center gap-2 border-l-4 border-brand-orange pl-3 mb-6">
+            Aloqa ma'lumotlari
+          </h3>
+
+          <div class="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/40">
+            <div class="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+              <i class="fa-brands fa-telegram"></i>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase font-mono theme-text-sub text-slate-400">Telegram</p>
+              <p class="text-sm font-semibold theme-text-heading text-white">@bositxonov7</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/40">
+            <div class="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase font-mono theme-text-sub text-slate-400">E-pochta</p>
+              <p class="text-sm font-semibold theme-text-heading text-white">bositxonov7@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 p-3.5 rounded-xl bg-slate-900/50 border border-slate-800/40">
+            <div class="w-10 h-10 rounded-lg bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase font-mono theme-text-sub text-slate-400">Manzil</p>
+              <p class="text-sm font-semibold theme-text-heading text-white">O'zbekiston</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 theme-card bg-[#0f121a]/85 backdrop-blur-md border border-[#1e2433] rounded-2xl p-6">
+          <h3 class="text-lg font-bold theme-text-heading text-white flex items-center gap-2 border-l-4 border-brand-orange pl-3 mb-2">
+            Xabar yo'llash
+          </h3>
+          <p class="text-xs theme-text-sub text-slate-400 mb-6">Tarmoq infratuzilmasi, audit yoki hamkorlik masalalari bo'yicha to'g'ridan-to'g'ri yozishingiz mumkin.</p>
+
+          <form onsubmit="event.preventDefault(); window.open('https://t.me/bositxonov7', '_blank');" class="space-y-4">
+            <div>
+              <label class="block text-xs font-medium theme-text-heading text-slate-300 mb-1">Ism-sharifingiz</label>
+              <input type="text" placeholder="Ismingiz..." required class="theme-input w-full bg-[#090b10] border border-[#1e2433] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-orange transition-colors" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium theme-text-heading text-slate-300 mb-1">Telefon raqamingiz</label>
+                <input type="text" placeholder="+998 (90) 123-45-67" class="theme-input w-full bg-[#090b10] border border-[#1e2433] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-orange transition-colors" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium theme-text-heading text-slate-300 mb-1">E-pochta manzilingiz</label>
+                <input type="email" placeholder="example@mail.com" required class="theme-input w-full bg-[#090b10] border border-[#1e2433] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-orange transition-colors" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium theme-text-heading text-slate-300 mb-1">Xabaringiz</label>
+              <textarea rows="4" placeholder="Xabar matni..." required class="theme-input w-full bg-[#090b10] border border-[#1e2433] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-orange transition-colors"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-orange hover:bg-[#e05600] text-white font-bold text-sm transition-all shadow-lg shadow-brand-orange/25">
+              Xabarni yuborish
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= FOOTER (SKRINSHOTDAGI KABI QILINGAN QISM) ================= -->
+    <footer class="pt-16 pb-12 border-t border-[#1e2433]/70 text-center">
+      <div class="max-w-2xl mx-auto px-4 flex flex-col items-center space-y-6">
+        
+        <!-- Doiraviy Rasm[cite: 14] -->
+        <div class="w-20 h-20 rounded-full p-[2px] bg-gradient-to-tr from-brand-orange via-[#1e2433] to-brand-blue shadow-lg shadow-brand-orange/20 overflow-hidden">
+          <img 
+            src="./images/kerakli.jpg" 
+            alt="Bositxonov Abdulaziz" 
+            class="w-full h-full object-cover rounded-full"
+          />
+        </div>
+
+        <!-- Logo sarlavha[cite: 14] -->
+        <div class="font-extrabold tracking-widest text-lg theme-text-heading text-white">
+          BOSITXONOV<span class="text-brand-orange">.DEV</span>
+        </div>
+
+        <!-- Siz so'ragan iqtibos / tavsif matni[cite: 14] -->
+        <p class="italic text-sm sm:text-base theme-text-sub text-slate-300 max-w-lg leading-relaxed">
+          "Xech qachon narxiga qaramasdan narsa sotib olmoqchi bo'lsang - Vaqtiga qaramasdan ishlashing kerak."
+        </p>
+
+        <!-- Kichik Tarmoq Ikonkalari[cite: 14] -->
+        <div class="flex items-center gap-3 pt-2">
+          <a href="https://t.me/bositxonov7" target="_blank" title="Telegram" class="w-11 h-11 rounded-xl bg-slate-900/80 border border-[#1e2433] theme-card flex items-center justify-center text-slate-400 hover:text-brand-orange hover:border-brand-orange transition-all">
+            <i class="fa-brands fa-telegram text-base"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" title="Instagram" class="w-11 h-11 rounded-xl bg-slate-900/80 border border-[#1e2433] theme-card flex items-center justify-center text-slate-400 hover:text-brand-orange hover:border-brand-orange transition-all">
+            <i class="fa-brands fa-instagram text-base"></i>
+          </a>
+          <a href="https://github.com" target="_blank" title="GitHub" class="w-11 h-11 rounded-xl bg-slate-900/80 border border-[#1e2433] theme-card flex items-center justify-center text-slate-400 hover:text-brand-orange hover:border-brand-orange transition-all">
+            <i class="fa-brands fa-github text-base"></i>
+          </a>
+          <a href="mailto:bositxonov7@gmail.com" title="E-pochta" class="w-11 h-11 rounded-xl bg-slate-900/80 border border-[#1e2433] theme-card flex items-center justify-center text-slate-400 hover:text-brand-orange hover:border-brand-orange transition-all">
+            <i class="fa-regular fa-envelope text-base"></i>
+          </a>
+        </div>
+
+        <!-- Mualliflik huquqi[cite: 14] -->
+        <div class="font-mono text-xs theme-text-sub text-slate-500 pt-4">
+          © 2026 Bositxonov Portfolio. Barcha huquqlar himoyalangan.
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ================= SUZUVCHI TEZKOR PANEL (FLOATING WIDGET) ================= -->
+  <aside aria-label="Tezkor amallar paneli" class="fixed right-5 bottom-6 z-50 flex flex-col items-center gap-3">
+    
+    <a href="https://t.me/bositxonov7" target="_blank" title="Telegram" class="w-12 h-12 rounded-full bg-[#24A1DE] text-white flex items-center justify-center text-xl shadow-lg shadow-[#24A1DE]/40 hover:scale-110 active:scale-95 transition-all border border-white/20">
+      <i class="fa-brands fa-telegram"></i>
+    </a>
+
+    <a href="https://instagram.com" target="_blank" title="Instagram" class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center text-xl shadow-lg shadow-pink-600/30 hover:scale-110 active:scale-95 transition-all border border-white/20">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <button id="theme-toggle" title="Rejimni o'zgartirish" class="w-12 h-12 rounded-full bg-[#141a29] text-brand-yellow flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-95 transition-all border border-slate-700/60">
+      <i id="theme-icon" class="fa-regular fa-sun"></i>
+    </button>
+
+    <button id="scroll-to-top" title="Tepaga chiqish" class="w-12 h-12 rounded-full bg-[#0d111a] text-brand-orange flex items-center justify-center text-lg shadow-lg hover:scale-110 active:scale-95 transition-all border border-brand-orange/40">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+  </aside>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // 1. NIGHTLIGHT / DARKLIGHT SWITCHER
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') {
+      document.body.classList.add('light-theme');
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      let isLight = document.body.classList.contains('light-theme');
+      
+      if (isLight) {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+      } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // 2. TEPAGA QAYTISH TUGMASI (SCROLL TO TOP)
+    const scrollTopBtn = document.getElementById('scroll-to-top');
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 3. TYPEWRITER EFFEKTI
+    const words = ["Tarmoq administratori", "Kiberxavfsizlik mutaxassisi", "Tizim ma'muri (SysAdmin)"];
+    let i = 0;
+    let timer;
+
+    function typingEffect() {
+      let word = words[i].split("");
+      var loopTyping = function() {
+        if (word.length > 0) {
+          document.getElementById('typewriter').innerHTML += word.shift();
+        } else {
+          setTimeout(deletingEffect, 2000);
+          return false;
+        }
+        timer = setTimeout(loopTyping, 100);
+      };
+      loopTyping();
+    }
+
+    function deletingEffect() {
+      let word = words[i].split("");
+      var loopDeleting = function() {
+        if (word.length > 0) {
+          word.pop();
+          document.getElementById('typewriter').innerHTML = word.join("");
+        } else {
+          if (words.length > (i + 1)) {
+            i++;
+          } else {
+            i = 0;
+          }
+          setTimeout(typingEffect, 500);
+          return false;
+        }
+        timer = setTimeout(loopDeleting, 50);
+      };
+      loopDeleting();
+    }
+
+    typingEffect();
+
+    // 4. JONLI ZARRACHALAR (CANVAS)
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    let mouse = { x: null, y: null, radius: 150 };
+
+    window.addEventListener('resize', initCanvas);
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
+    window.addEventListener('mouseout', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    function initCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      createParticles();
+    }
+
+    class Particle {
+      constructor(x, y, dx, dy, size) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.size = size;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+        ctx.fillStyle = 'rgba(255, 98, 0, 0.7)';
+        ctx.fill();
+      }
+      update() {
+        if (this.x > canvas.width || this.x < 0) this.dx = -this.dx;
+        if (this.y > canvas.height || this.y < 0) this.dy = -this.dy;
+
+        if (mouse.x != null && mouse.y != null) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < mouse.radius) {
+            let force = (mouse.radius - distance) / mouse.radius;
+            let dirX = dx / distance;
+            let dirY = dy / distance;
+            this.x -= dirX * force * 3;
+            this.y -= dirY * force * 3;
+          }
+        }
+
+        this.x += this.dx;
+        this.y += this.dy;
+        this.draw();
+      }
+    }
+
+    function createParticles() {
+      particles = [];
+      const numberOfParticles = Math.floor((canvas.width * canvas.height) / 14000);
+      for (let i = 0; i < numberOfParticles; i++) {
+        let size = Math.random() * 2 + 1;
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let dx = (Math.random() - 0.5) * 0.7;
+        let dy = (Math.random() - 0.5) * 0.7;
+        particles.push(new Particle(x, y, dx, dy, size));
+      }
+    }
+
+    function connect() {
+      let isLight = document.body.classList.contains('light-theme');
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a + 1; b < particles.length; b++) {
+          let dx = particles[a].x - particles[b].x;
+          let dy = particles[a].y - particles[b].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 120) {
+            let opacity = 1 - (distance / 120);
+            ctx.strokeStyle = isLight 
+              ? `rgba(255, 98, 0, ${opacity * 0.28})` 
+              : `rgba(255, 98, 0, ${opacity * 0.22})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+      }
+      connect();
+    }
+
+    initCanvas();
+    animate();
+  </script>
+
+</body>
+</html>
